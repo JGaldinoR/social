@@ -64,7 +64,11 @@ class CarreraController extends Controller
      */
     public function show(Carrera $carrera)
     {
-        //
+
+        return view('carrera.showCarrera',compact('carrera'));
+        //->with('carrera',$carrera)
+        //$valores['valor1'] = $valor1;
+
     }
 
     /**
@@ -75,7 +79,7 @@ class CarreraController extends Controller
      */
     public function edit(Carrera $carrera)
     {
-        //
+        return view('carrera.formCarrera',compact('carrera'));
     }
 
     /**
@@ -87,7 +91,13 @@ class CarreraController extends Controller
      */
     public function update(Request $request, Carrera $carrera)
     {
-        //
+        $carrera->carrera = $request->input('carrera');
+
+        $carrera->save();
+
+        return redirect()->route('carrera.show', $carrera->id);
+
+
     }
 
     /**
@@ -98,6 +108,8 @@ class CarreraController extends Controller
      */
     public function destroy(Carrera $carrera)
     {
-        //
+        $carrera->delete();
+
+        return redirect()->route('carrera.index');
     }
 }
