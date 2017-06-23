@@ -38,6 +38,11 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'carrera' => 'required|max:255|unique:carreras'
+            ]);
+
         Carrera::create($request->input());
         /*
         $carrera = new Carrera();
@@ -91,6 +96,10 @@ class CarreraController extends Controller
      */
     public function update(Request $request, Carrera $carrera)
     {
+        $this->validate($request, [
+            'carrera' => 'required|max:255|unique:carreras'
+            ]);
+
         $carrera->carrera = $request->input('carrera');
 
         $carrera->save();
