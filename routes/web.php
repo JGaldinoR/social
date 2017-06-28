@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/carrera', 'CarreraController');
 Route::resource('/usuario', 'UserController');
+
+Route::post('/admin-usuario/asociar-programa','AdminUsuarioController@asociarPrograma');
 //Route::get('/carrera', 'CarreraController'@index);
 //Route::get('/carrera/create', 'CarreraController'@create);
 

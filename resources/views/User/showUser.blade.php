@@ -8,7 +8,7 @@
                 <div class="panel-heading">Listado de users</div>
 
                 <div class="panel-body">
-                    @if(count($users) > 0)
+                    
                         <table class = "table border">
                             <thead>
 
@@ -21,16 +21,10 @@
 
                             </thead>
                             <body>
-                            @foreach($users as $user)
+                            
                                 <tr>
 
-                                    <td>{{ $user->id}} </td>
-                                    
                                         <td>{{ $user->id}}</td>
-                                        <td>
-                                            <a href="{{route('usuario.show',$user->id)}}">
-                                        
-                                        {{$user->nombre}}</a></td>
                                         <td>{{ $user->codigo}}</td>
                                         <td>{{ $user->nombre}}</td>
                                         <td>{{ $user->correo}}</td>
@@ -38,18 +32,29 @@
                                         <td>{{ $user->rol}}</td>
                                     
                                  </tr>
-                             @endforeach
+                             
                             </body>
                          </table>
-                    @else
-                         <span>No hay users registradas</span>
-                    @endif
-
+                    
                     
                 </div>
 
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            <h3>Asociar con Programa</h3>
+
+                {!! Form::open(['action' => 'AdminUsuarioController@asociarPrograma' ]) !!}
+                {!! Form::label('programa_id','Selecciones el Programa',['class' => '']) !!}
+                {!! Form::select('programa_id', $programas, null, ['class' => 'form-control']) !!}
+                {!! Form::hidden('user_id',$user->id) !!}
+                {!! Form::submit('Aceptar',['class' => 'btn btn-success']) !!}
+                {!! Form::close() !!}
+
+            </div>
+
     </div>
 </div>
 @endsection
