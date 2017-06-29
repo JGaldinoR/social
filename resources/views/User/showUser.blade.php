@@ -32,6 +32,12 @@
                                         <td>{{ $user->rol}}</td>
                                     
                                  </tr>
+
+                                 <tr>
+
+                                    <td colspan="6">Programa: {{ $user->programas()->first() !==null ?$user->programas()->first()->nombre : "No Asignado" }}</td>
+
+                                 </tr>
                              
                             </body>
                          </table>
@@ -50,7 +56,7 @@
                 {!! Form::label('programa_id','Selecciones el Programa',['class' => '']) !!}
                 {!! Form::select('programa_id', $programas, null, ['class' => 'form-control']) !!}
                 {!! Form::hidden('user_id',$user->id) !!}
-                {!! Form::submit('Aceptar',['class' => 'btn btn-success']) !!}
+                {!! Form::submit('Aceptar',['class' => 'btn btn-default']) !!}
                 {!! Form::close() !!}
 
             </div>

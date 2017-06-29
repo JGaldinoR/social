@@ -54,7 +54,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id)->load('carrera');
-        $programas = Programa::get(['id','nombre'])->toArray();
+        
+        $programas = Programa::get()->pluck('nombre','id')->toArray();
 
         return view('User.showUser',compact('user','programas'));
     }

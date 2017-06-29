@@ -34,7 +34,7 @@
                                         <td>{{ $user->codigo}}</td>
                                         <td>{{ $user->nombre}}</td>
                                         <td>{{ $user->correo}}</td>
-                                        <td>{{$user->carrera->carrera}}</td>
+                                        <td>{{$user->carrera->carrera }}</td>
                                         <td>{{ $user->rol}}</td>
                                     
                                  </tr>
