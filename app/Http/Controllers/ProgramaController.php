@@ -12,7 +12,7 @@ class ProgramaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($rol = null)
     {
         //carga la relacion con usuarios
         //$programas = Programa::all()->load('users');
@@ -30,10 +30,20 @@ class ProgramaController extends Controller
         //->with('users')
         //->get();
 
-        $programas = Programa::with(['users' => function($query){
-            $query->where('rol','Admin');
-        }])
+        if(isset($rol))
+        {
+            $programas = Programa::Rol($rol)
         ->get();
+
+
+        }
+        else
+        {
+            $programas = Programa::all()->load('users');
+        }
+        
+
+        
 
         //$programas = Programa::whereHas('users',function($query){
          //   $query->where('rol','Admin');

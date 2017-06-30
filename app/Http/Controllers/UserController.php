@@ -18,6 +18,8 @@ class UserController extends Controller
     {
 
         $users = User::all()->load('carrera');
+
+        //$users = Users::with()->load('carrera');
         
         //$users = User::all();
 

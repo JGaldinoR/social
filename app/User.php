@@ -14,6 +14,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $appends = ['numero_programas'];
+
     protected $fillable = [
         'nombre', 'correo', 'password','codigo','rol','carrera_id'
     ];
@@ -36,5 +39,18 @@ class User extends Authenticatable
     public function programas()
     {
         return $this->belongsToMany('App\Programa');
+    }
+
+    public function getUsuarioCorreoAttribute()
+    {
+        return $this->nombre . ' . ' . $this->correo;
+    }
+
+
+    public function getNumeroProgramasAttribute()
+    {
+        $noProgramas = count($this->programas()->get());
+
+        return $noProgramas;
     }
 }

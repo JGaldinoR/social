@@ -15,9 +15,10 @@
                                  <th>ID</th>
                                  <th>Codigo</th>
                                  <th>Nombre</th>
-                                 <th>Correo</th>
+                                 <th>No Programas</th>
                                  <th>Carrera</th>
                                  <th>Rol</th>
+                                 <th>Acceso Nombre-Correo</th>
 
                             </thead>
                             <body>
@@ -26,16 +27,15 @@
 
                                     <td>{{ $user->id}} </td>
                                     
-                                        <td>{{ $user->id}}</td>
+                                        <td>{{ $user->codigo}}</td> 
                                         <td>
                                             <a href="{{route('usuario.show',$user->id)}}">
                                         
                                         {{$user->nombre}}</a></td>
-                                        <td>{{ $user->codigo}}</td>
-                                        <td>{{ $user->nombre}}</td>
-                                        <td>{{ $user->correo}}</td>
-                                        <td>{{$user->carrera->carrera }}</td>
+                                        <td>{{ $user->numero_programas }}</td>
+                                        <td>{{ $user->carrera->carrera }}</td>
                                         <td>{{ $user->rol}}</td>
+                                        <td>{{ $user->usuario_correo }}</td>
                                     
                                  </tr>
                              @endforeach
